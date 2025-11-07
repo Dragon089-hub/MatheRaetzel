@@ -1,0 +1,115 @@
+/* === Grunddesign === */
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(160deg, #f4ede3, #e9dcc5);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  /* === Karte mit abgerundeten Ecken === */
+  .card {
+    width: 320px;
+    height: 420px;
+    background: #fffaf2;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    overflow: hidden;
+  }
+  
+  /* === Sektionen === */
+  .input-section, .info-section, .lock-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input-section {
+    background: #f6d9d2;
+  }
+  
+  .info-section {
+    background: #d8e7fa;
+    font-size: 15px;
+    color: #333;
+  }
+  
+  .lock-section {
+    background: #f5f1e8;
+  }
+  
+  /* === Eingabefeld === */
+  input {
+    width: 80%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 2px solid #c5b6a3;
+    border-radius: 10px;
+    outline: none;
+    background: #fffdf9;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #b2937a;
+    box-shadow: 0 0 8px rgba(178,147,122,0.3);
+  }
+  
+  /* === Schloss === */
+  .lock {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background-color: #333;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  }
+  
+  .lock::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    left: 16px;
+    width: 30px;
+    height: 22px;
+    border: 4px solid #333;
+    border-bottom: none;
+    border-radius: 14px 14px 0 0;
+    transform-origin: center;
+    transform: rotate(0deg);
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  
+  /* Schloss geschlossen */
+  .lock.closed::before {
+    transform: rotate(-25deg);
+  }
+  
+  /* Schloss grün oder rot bei Status */
+  .lock.available {
+    box-shadow: 0 0 20px 5px rgba(0, 200, 100, 0.5);
+    background-color: #2e7d32;
+  }
+  
+  .lock.available::before {
+    border-color: #2e7d32;
+  }
+  
+  .lock.unavailable {
+    box-shadow: 0 0 20px 5px rgba(255, 80, 80, 0.5);
+    background-color: #b71c1c;
+  }
+  
+  .lock.unavailable::before {
+    border-color: #b71c1c;
+  }
+  
+  /* Hover-Effekt */
+  .lock:hover {
+    transform: scale(1.05);
+  }
